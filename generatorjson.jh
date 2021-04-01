@@ -1,0 +1,35 @@
+entity Type {
+name String,
+data Boolean,
+}
+
+entity Properties {
+name String
+format String
+}
+
+entity Dependencies {
+name String
+format String
+}
+
+entity ChoiceForProperties {
+name String
+}
+
+entity DataProperties {
+name String
+format String
+}
+
+relationship ManyToMany {
+Type{properties} to Properties{type}
+}
+
+relationship ManyToMany {
+Type{data(properties)} to DataProperties{type}
+}
+
+relationship OneToMany {
+Properties to ChoiceForProperties{properties},
+}
